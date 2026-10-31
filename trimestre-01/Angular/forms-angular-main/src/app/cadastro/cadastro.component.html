@@ -1,9 +1,9 @@
 <main class="principal">
   <h2 class="principal__titulo">Dados do cadastro</h2>
 
-  <form class="principal__formulario" #f="ngForm">
+  <form class="principal__formulario" #f="ngForm" (ngSubmit)="cadastrar()">
     <h3 class="principal__subtitulo">Dados pessoais</h3>
-    <div class="formulario__campo"> <!-- NOME -->>
+    <div class="formulario__campo"> <!-- NOME -->
       <label class="campo__etiqueta" for="nome">Nome Completo</label>
       <input 
         name="nome" 
@@ -12,11 +12,19 @@
         ngModel
         #nome="ngModel"
         required
-        minlength="3"
+        minlength="2"
       >
+      <div *ngIf="nome?.touched && nome?.invalid">
+        <app-msg-erro
+          mensagem="O campo deve ser preenchido" *ngIf="nome?.errors?.['required']">
+        </app-msg-erro>
+        <app-msg-erro
+          mensagem="O nome deve conter pelo menos 2 caracteres" *ngIf="nome?.errors?.['minlength']">
+        </app-msg-erro>
+      </div>
     </div>
-    <div class="formulario__dupla"> <!-- NASCIMENTO E CONTATO -->>
-      <div class="formulario__campo"> <!-- NASCIMENTO -->>
+    <div class="formulario__dupla"> <!-- NASCIMENTO E CONTATO -->
+      <div class="formulario__campo"> <!-- NASCIMENTO -->
         <label class="campo__etiqueta" for="nascimento">Nascimento</label>
         <input 
           name="nascimento" 
@@ -30,7 +38,7 @@
           maiorDeIdadeValidator
         />
       </div>
-      <div class="formulario__campo"> <!-- CONTATO -->>
+      <div class="formulario__campo"> <!-- CONTATO -->
         <label class="campo__etiqueta" for="telefone">Contato</label>
         <input 
           name="telefone" 
@@ -45,7 +53,7 @@
         />
       </div>
     </div>
-    <div class="formulario__campo"> <!--  E-MAIL -->>
+    <div class="formulario__campo"> <!--  E-MAIL -->
       <label class="campo__etiqueta" for="email">E-mail</label>
       <input 
         name="email" 
@@ -62,7 +70,7 @@
 
     <h3 class="principal__subtitulo">Endereço</h3> 
 
-    <div class="formulario__campo"> <!--  CEP -->>
+    <div class="formulario__campo"> <!--  CEP -->
       <label class="campo__etiqueta" for="cep">CEP</label> 
       <input 
         name="cep" 
@@ -77,7 +85,7 @@
       />
     </div>
 
-    <div class="formulario__campo"> <!--  ENDEREÇO -->>
+    <div class="formulario__campo"> <!--  ENDEREÇO -->
       <label class="campo__etiqueta" for="endereco">Endereço</label>
       <input 
         name="endereco" 
@@ -88,7 +96,7 @@
         required 
       />
     </div>
-    <div class="formulario__dupla"> <!--  NUMERO E COMPLEMENTO -->>
+    <div class="formulario__dupla"> <!--  NUMERO E COMPLEMENTO -->
       <div class="formulario__campo"> <!--  NUMERO -->>
         <label class="campo__etiqueta" for="numero">Numero</label>
         <input 
@@ -111,7 +119,7 @@
         />
       </div>
     </div>
-    <div class="formulario__campo"> <!--  BAIRRO -->>
+    <div class="formulario__campo"> <!--  BAIRRO -->
       <label class="campo__etiqueta" for="bairro">Bairro</label>
       <input 
         name="bairro" 
@@ -122,7 +130,7 @@
         required
       />
     </div>
-    <div class="formulario__dupla"> <!--  CIDADE E UF -->>
+    <div class="formulario__dupla"> <!--  CIDADE E UF -->
       <div class="formulario__campo"> <!--  CIDADE -->>
         <label class="campo__etiqueta" for="cidade">Cidade</label>
         <input 

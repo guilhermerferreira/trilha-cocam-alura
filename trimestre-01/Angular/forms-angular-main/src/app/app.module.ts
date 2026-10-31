@@ -9,6 +9,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { SucessoCadastroComponent } from './sucesso-cadastro/sucesso-cadastro.component';
 import { FormsModule } from '@angular/forms';
 import { IdadeValidatorDirective } from './directive/idade-validator.directive';
+import { MsgErroComponent } from './components/msg-erro/msg-erro.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { IdadeValidatorDirective } from './directive/idade-validator.directive';
     CadastroComponent, 
     SucessoCadastroComponent,
     IdadeValidatorDirective,
+    MsgErroComponent,
   ],
   imports: [
     BrowserModule, 
