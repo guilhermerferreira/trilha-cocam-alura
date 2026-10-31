@@ -37,6 +37,17 @@
           idadeValidator
           maiorDeIdadeValidator
         />
+        <div *ngIf="nascimento?.touched && nascimento?.invalid">
+          <app-msg-erro
+            mensagem="O campo deve ser preenchido." *ngIf="nascimento?.errors?.['required']">
+          </app-msg-erro>
+          <app-msg-erro
+            mensagem="Idade inválida." *ngIf="nascimento?.errors?.['idadeValidator']">
+          </app-msg-erro>
+          <app-msg-erro
+            mensagem="Idade mínima permitida de 18 anos." *ngIf="nascimento?.errors?.['maiorDeIdadeValidator']">
+          </app-msg-erro>
+        </div>
       </div>
       <div class="formulario__campo"> <!-- CONTATO -->
         <label class="campo__etiqueta" for="telefone">Contato</label>
@@ -51,6 +62,14 @@
           required
           pattern="\(?\d{2}\)?\d{5}-?\d{4}"
         />
+        <div *ngIf="telefone?.touched && telefone?.invalid">
+          <app-msg-erro
+            mensagem="O campo deve ser preenchido" *ngIf="telefone?.errors?.['required']">
+          </app-msg-erro>
+          <app-msg-erro
+            mensagem="O telefone deve seguir o exemplo: (XX) XXXXX-XXXX" *ngIf="telefone?.errors?.['pattern']">
+          </app-msg-erro>
+        </div>        
       </div>
     </div>
     <div class="formulario__campo"> <!--  E-MAIL -->
@@ -65,6 +84,14 @@
         required
         email
       />
+      <div *ngIf="email?.touched && email?.invalid">
+        <app-msg-erro
+          mensagem="O campo deve ser preenchido" *ngIf="email?.errors?.['required']">
+        </app-msg-erro>
+        <app-msg-erro
+          mensagem="O email deve conter @ e .dominio" *ngIf="email?.errors?.['email']">
+        </app-msg-erro>
+      </div>      
     </div>
 
 
@@ -83,6 +110,14 @@
         minlength="8"
         maxlength="9"
       />
+      <div *ngIf="cep?.touched && cep?.invalid">
+        <app-msg-erro
+          mensagem="O campo deve ser preenchido" *ngIf="cep?.errors?.['required']">
+        </app-msg-erro>
+          <app-msg-erro
+          mensagem="CEP inválido" *ngIf="cep?.errors?.['pattern']">
+        </app-msg-erro>
+      </div>
     </div>
 
     <div class="formulario__campo"> <!--  ENDEREÇO -->
