@@ -1,63 +1,148 @@
 <main class="principal">
   <h2 class="principal__titulo">Dados do cadastro</h2>
 
-  <form class="principal__formulario" id="formulario">
+  <form class="principal__formulario" #f="ngForm">
     <h3 class="principal__subtitulo">Dados pessoais</h3>
-    <div class="formulario__campo">
+    <div class="formulario__campo"> <!-- NOME -->>
       <label class="campo__etiqueta" for="nome">Nome Completo</label>
-      <input name="nome" id="nome" class="campo__escrita">
+      <input 
+        name="nome" 
+        id="nome"
+        class="campo__escrita"
+        ngModel
+        #nome="ngModel"
+        required
+        minlength="3"
+      >
     </div>
-    <div class="formulario__dupla">
-      <div class="formulario__campo">
+    <div class="formulario__dupla"> <!-- NASCIMENTO E CONTATO -->>
+      <div class="formulario__campo"> <!-- NASCIMENTO -->>
         <label class="campo__etiqueta" for="nascimento">Nascimento</label>
-        <input name="nascimento" id="nascimento" type="date" class="campo__escrita"/>
+        <input 
+          name="nascimento" 
+          id="nascimento" 
+          type="date" 
+          class="campo__escrita"
+          ngModel
+          #nascimento="ngModel"
+          required
+        />
       </div>
-      <div class="formulario__campo">
+      <div class="formulario__campo"> <!-- CONTATO -->>
         <label class="campo__etiqueta" for="telefone">Contato</label>
-        <input name="telefone" id="telefone" type="tel" placeholder="(XX) XXXXX-XXXX" class="campo__escrita"/>
+        <input 
+          name="telefone" 
+          id="telefone" 
+          type="tel" 
+          placeholder="(XX) XXXXX-XXXX" 
+          class="campo__escrita"
+          ngModel
+          #telefone="ngModel"
+          required
+          pattern="\(?\d{2}\)?\d{5}-?\d{4}"
+        />
       </div>
     </div>
-    <div class="formulario__campo">
+    <div class="formulario__campo"> <!--  E-MAIL -->>
       <label class="campo__etiqueta" for="email">E-mail</label>
-      <input name="email" id="email" type="email" class="campo__escrita"/>
+      <input 
+        name="email" 
+        id="email" 
+        type="email" 
+        class="campo__escrita"
+        ngModel
+        #email="ngModel"
+        required
+        email
+      />
     </div>
 
 
-    <h3 class="principal__subtitulo">Endereço</h3>
+    <h3 class="principal__subtitulo">Endereço</h3> 
 
-    <div class="formulario__campo">
-      <label class="campo__etiqueta" for="cep">CEP</label>
-      <input name="cep" id="cep" class="campo__escrita" />
-      <div id="erro"></div>
+    <div class="formulario__campo"> <!--  CEP -->>
+      <label class="campo__etiqueta" for="cep">CEP</label> 
+      <input 
+        name="cep" 
+        id="cep" 
+        class="campo__escrita" 
+        ngModel
+        #cep="ngModel"
+        required
+        pattern="^\d{5}-?\d{3}$"
+        minlength="8"
+        maxlength="9"
+      />
     </div>
 
-    <div class="formulario__campo">
+    <div class="formulario__campo"> <!--  ENDEREÇO -->>
       <label class="campo__etiqueta" for="endereco">Endereço</label>
-      <input name="endereco" id="endereco" class="campo__escrita" />
+      <input 
+        name="endereco" 
+        id="endereco" 
+        class="campo__escrita"
+        ngModel
+        #endereco="ngModel"
+        required 
+      />
     </div>
-    <div class="formulario__dupla">
-      <div class="formulario__campo">
+    <div class="formulario__dupla"> <!--  NUMERO E COMPLEMENTO -->>
+      <div class="formulario__campo"> <!--  NUMERO -->>
         <label class="campo__etiqueta" for="numero">Numero</label>
-        <input name="numero" id="numero" class="campo__escrita" />
+        <input 
+          name="numero" 
+          id="numero" 
+          class="campo__escrita" 
+          ngModel
+          #numero="ngModel"
+          required
+        />
       </div>
-      <div class="formulario__campo">
+      <div class="formulario__campo"> <!--  COMPLEMENTO -->>
         <label class="campo__etiqueta" for="complemento">Complemento</label>
-        <input name="complemento" id="complemento" class="campo__escrita" />
+        <input 
+          name="complemento" 
+          id="complemento" 
+          class="campo__escrita"
+          ngModel
+          #complemento="ngModel" 
+        />
       </div>
     </div>
-    <div class="formulario__campo">
+    <div class="formulario__campo"> <!--  BAIRRO -->>
       <label class="campo__etiqueta" for="bairro">Bairro</label>
-      <input name="bairro" id="bairro" class="campo__escrita" />
+      <input 
+        name="bairro" 
+        id="bairro" 
+        class="campo__escrita" 
+        ngModel
+        #bairro="ngModel"
+        required
+      />
     </div>
-    <div class="formulario__dupla">
-      <div class="formulario__campo">
+    <div class="formulario__dupla"> <!--  CIDADE E UF -->>
+      <div class="formulario__campo"> <!--  CIDADE -->>
         <label class="campo__etiqueta" for="cidade">Cidade</label>
-        <input name="cidade" id="cidade" class="campo__escrita" />
+        <input 
+          name="cidade" 
+          id="cidade" 
+          class="campo__escrita" 
+          ngModel
+          #cidade="ngModel"
+          required=""
+        />
       </div>
 
-      <div class="formulario__campo">
+      <div class="formulario__campo"> <!--  UF -->>
         <label class="campo__etiqueta" for="estado">UF</label>
-        <select id="estado" name="estado" class="campo__escrita">
+        <select 
+          id="estado" 
+          name="estado" 
+          class="campo__escrita"
+          ngModel
+          #uf="ngModel"
+          required
+        >
           <option value="AC">Acre</option>
           <option value="AL">Alagoas</option>
           <option value="AP">Amapá</option>
