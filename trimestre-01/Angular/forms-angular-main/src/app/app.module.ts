@@ -10,6 +10,7 @@ import { SucessoCadastroComponent } from './sucesso-cadastro/sucesso-cadastro.co
 import { FormsModule } from '@angular/forms';
 import { IdadeValidatorDirective } from './directive/idade-validator.directive';
 import { MsgErroComponent } from './components/msg-erro/msg-erro.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MsgErroComponent } from './components/msg-erro/msg-erro.component';
     BrowserModule, 
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
