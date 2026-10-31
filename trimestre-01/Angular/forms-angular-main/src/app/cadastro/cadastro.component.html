@@ -109,6 +109,7 @@
         pattern="^\d{5}-?\d{3}$"
         minlength="8"
         maxlength="9"
+        (blur)="getConsultaCEP($event)"
       />
       <div *ngIf="cep?.touched && cep?.invalid">
         <app-msg-erro
