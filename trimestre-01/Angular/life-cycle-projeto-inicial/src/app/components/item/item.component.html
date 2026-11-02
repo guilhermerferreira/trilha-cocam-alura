@@ -1,0 +1,12 @@
+<input
+  class="checkbox"
+  type="checkbox"
+  name="comprado"
+  id="comprado"
+>
+<p class="description"> {{ item.nome }} </p>
+<div class="d-contents">
+  <fa-icon class="delete-icon" [icon]="faTrash" ></fa-icon>
+  <fa-icon class="edit-icon" [icon] ="faPen" ></fa-icon>
+</div>
+<small class="date"> {{ item.data }} </small>
