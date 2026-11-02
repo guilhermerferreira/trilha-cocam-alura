@@ -1,6 +1,7 @@
 import { ConsultaCepService } from './../service/consulta-cep.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-cadastro',
@@ -21,11 +22,25 @@ export class CadastroComponent implements OnInit {
       console.log('Formulário enviado');
   }
 
-  getConsultaCEP(ev: any) {
+  getConsultaCEP(ev: any, form: NgForm) {
+    // pega o o valor passado no evento. nesse caso o input
     const cep = ev.target.value;
-    this.service.consultaCEP(cep).subscribe( resposta => {
-      console.log(resposta)
+
+    if(cep !== ''){
+      this.service.consultaCEP(cep).subscribe( dados => {
+        this.populaEndereco(dados, form)
+      })
+    }
+  }
+
+  populaEndereco(dados: any, form: NgForm){
+    form.form.patchValue({
+      endereco: dados.logradouro,
+      bairro: dados.bairro,
+      cidade: dados.localidade,
+      estado: dados.uf
     })
   }
+
 
 }

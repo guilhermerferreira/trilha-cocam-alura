@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { IdadeValidatorDirective } from './directive/idade-validator.directive';
 import { MsgErroComponent } from './components/msg-erro/msg-erro.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CepValidatorDirective } from './directive/cep-validator.directive';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
     SucessoCadastroComponent,
     IdadeValidatorDirective,
     MsgErroComponent,
+    CepValidatorDirective,
   ],
   imports: [
     BrowserModule, 
