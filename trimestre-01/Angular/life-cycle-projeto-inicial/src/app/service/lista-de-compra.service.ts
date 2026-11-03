@@ -6,6 +6,8 @@ import { Injectable } from '@angular/core';
 })
 export class ListaDeCompraService {
 
+  nomeItem!: Item
+
   private listaDeCompra: Item[] = [
     {
       "id": 1,
@@ -34,4 +36,23 @@ export class ListaDeCompraService {
   getListaDeCompra(){
     return this.listaDeCompra;
   }
+
+  criarItemCompra(nomeItem: string): Item {
+    const id = this.listaDeCompra.length + 1;
+    const item = {
+      id: id,
+      nome: nomeItem,
+      data: new Date().toLocaleDateString('pt-BR'),
+      comprado: false,
+    }
+
+    return item;
+  }
+
+  adicionarItem(nomeItem: string): void {
+    this.listaDeCompra.push(this.criarItemCompra(nomeItem));
+    console.log(this.listaDeCompra.length)
+  }
+
+
 }
