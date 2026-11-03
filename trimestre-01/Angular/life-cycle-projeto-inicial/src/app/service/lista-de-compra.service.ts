@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class ListaDeCompraService {
 
-  nomeItem!: Item
+  nomeItem!: Item;
 
   private listaDeCompra: Item[] = [
     {
@@ -52,6 +52,18 @@ export class ListaDeCompraService {
   adicionarItem(nomeItem: string): void {
     this.listaDeCompra.push(this.criarItemCompra(nomeItem));
     console.log(this.listaDeCompra.length)
+  }
+
+  editarItem(itemAntigo: Item, nomeNovoItem: string) {
+    const itemEditado = {
+      id: itemAntigo.id,
+      nome: nomeNovoItem,
+      data: new Date().toLocaleDateString('pt-BR'),
+      comprado: false
+    }
+
+    const id = this.listaDeCompra.findIndex(item => item.id === itemAntigo.id)
+    this.listaDeCompra.splice(id, 1, itemEditado);
   }
 
 
