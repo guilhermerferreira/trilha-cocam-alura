@@ -19,6 +19,10 @@ small {
   grid-area: checkbox;
 }
 
+.item-comprado {
+  text-decoration: line-through;
+}
+
 .description {
   justify-self: start;
   align-self: center;

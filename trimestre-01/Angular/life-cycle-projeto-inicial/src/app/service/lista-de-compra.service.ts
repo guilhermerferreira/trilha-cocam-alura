@@ -1,5 +1,6 @@
 import { Item } from 'src/app/interfaces/iItem';
 import { Injectable } from '@angular/core';
+import { stringify } from 'querystring';
 
 @Injectable({
   providedIn: 'root'
@@ -8,29 +9,11 @@ export class ListaDeCompraService {
 
   nomeItem!: Item;
 
-  private listaDeCompra: Item[] = [
-    {
-      "id": 1,
-      "nome": "Queijo prato",
-      "data": "Segunda-feira (31/10/2022) às 08:30",
-      "comprado": false
-    },
-    {
-      "id": 2,
-      "nome": "Leite integral",
-      "data": "Segunda-feira (31/10/2022) às 08:30",
-      "comprado": false
-    },
-    {
-      "id": 3,
-      "nome": "Mamão papaia",
-      "data": "Segunda-feira (31/10/2022) às 08:30",
-      "comprado": true
-    },
-  ]
+  private listaDeCompra!: Item[];
+
 
   constructor() {
-    console.log('Instanciando dependências necessárias para o serviço.');
+    this.listaDeCompra = JSON.parse(localStorage.getItem('itens') || '[]')
   }
 
   getListaDeCompra(){
@@ -42,7 +25,7 @@ export class ListaDeCompraService {
     const item = {
       id: id,
       nome: nomeItem,
-      data: new Date().toLocaleDateString('pt-BR'),
+      data: new Date().toLocaleString('pt-BR'),
       comprado: false,
     }
 
@@ -58,12 +41,21 @@ export class ListaDeCompraService {
     const itemEditado = {
       id: itemAntigo.id,
       nome: nomeNovoItem,
-      data: new Date().toLocaleDateString('pt-BR'),
+      data: new Date().toLocaleString('pt-BR'),
       comprado: false
     }
 
     const id = this.listaDeCompra.findIndex(item => item.id === itemAntigo.id)
     this.listaDeCompra.splice(id, 1, itemEditado);
+  }
+
+  deletarItem(idItem: number) {
+    const id = this.listaDeCompra.findIndex(item => item.id == idItem)
+    this.listaDeCompra.splice(id, 1);
+  }
+
+  atualizarLocalStorage() {
+    localStorage.setItem('itens', JSON.stringify(this.listaDeCompra));
   }
 
 
