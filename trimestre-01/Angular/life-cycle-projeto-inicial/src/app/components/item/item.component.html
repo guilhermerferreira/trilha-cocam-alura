@@ -4,6 +4,7 @@
   name="comprado"
   id="comprado"
   (change)="alterarStatusComprado()"
+  [checked]="item.comprado"
 >
 <p [ngClass]="{'item-comprado': item.comprado, 'description': !item.comprado}"> {{ item.nome }} </p>
 <div class="d-contents">

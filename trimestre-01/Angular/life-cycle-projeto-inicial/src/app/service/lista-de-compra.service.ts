@@ -42,7 +42,7 @@ export class ListaDeCompraService {
       id: itemAntigo.id,
       nome: nomeNovoItem,
       data: new Date().toLocaleString('pt-BR'),
-      comprado: false
+      comprado: itemAntigo.comprado
     }
 
     const id = this.listaDeCompra.findIndex(item => item.id === itemAntigo.id)
