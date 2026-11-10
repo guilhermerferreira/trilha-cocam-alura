@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Item, Livro } from 'src/app/models/interfaces';
+import { LivroVolumeInfo } from 'src/app/models/livroVolumeInfo';
 import { LivroService } from 'src/app/services/livro.service';
 
 @Component({
@@ -18,29 +19,15 @@ export class ListaLivrosComponent {
 
   buscaLivros() {
     this.livroService.busca(this.campoBusca).subscribe({
-      next: livros => this.listaLivros = this.itemParaLivro(livros),
+      next: items => this.listaLivros = this.livrosResultadoParaLivro(items),
       error: erro => console.log(erro),
     })
   }
 
 
-
-  // Percorre a resposta do service: Array de Item e transforma em um Array de Livro
-  itemParaLivro(items): Livro[] {
-    const livros: Livro[] = [];
-
-    items.forEach(item => {
-      livros.push( this.livro = {
-        title: item.volumeInfo?.title,
-        authors: item.volumeInfo?.authors,
-        publisher: item.volumeInfo?.publisher,
-        publishedDate: item.volumeInfo?.publishedDate,
-        description: item.volumeInfo?.description,
-        previewLink: item.volumeInfo?.previewLink,
-        thumbnail: item.volumeInfo?.imageLinks?.thumbnail,
-      })
-    });
-    return livros;
+  // Percorre um array de item e para cada item cria um livroVolumeInfo
+  livrosResultadoParaLivro(items: Item[]): LivroVolumeInfo[] {
+    return items.map(item => new LivroVolumeInfo(item))
   }
 
 
